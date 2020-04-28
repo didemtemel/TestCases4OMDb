@@ -1,5 +1,6 @@
 package getRequest;
 
+import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 import org.apache.http.HttpStatus;
 import org.glassfish.pfl.tf.spi.annotation.Description;
@@ -53,7 +54,10 @@ public class ApiTest {
                 .statusCode(HttpStatus.SC_OK);
 
         MovieResponse mr = response.extract().response().as(MovieResponse.class);
-        System.out.println(mr.getReleased());
+        Assert.assertEquals(mr.getTitle(),"Harry Potter and the Sorcerer's Stone");
+        Assert.assertEquals(mr.getYear(),"2001");
+        Assert.assertEquals(mr.getReleased(),"16 Nov 2001");
 
     }
+
 }
