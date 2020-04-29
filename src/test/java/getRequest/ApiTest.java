@@ -17,13 +17,13 @@ public class ApiTest {
     @Description(" ")
     public void searchMovie() {
 
-        MovieResponse movieResult = searchSpesificMovie();
+        MovieResponse movieResult = searchSpecificMovie();
         Assert.assertNotNull(movieResult);
         searchById(movieResult);
     }
 
-    @Description("Search for spesific name with parameters under \"By Search\"")
-    public MovieResponse searchSpesificMovie() {
+    @Description("Search for specific name with parameters under \"By Search\"")
+    public MovieResponse searchSpecificMovie() {
         ValidatableResponse response = given()
                 .param("s", "Harry Potter")
                 .param("apikey", API_KEY)
@@ -42,7 +42,7 @@ public class ApiTest {
         return null;
     }
 
-    @Description("Search for spesific id with parameters under \"By ID or Title\"")
+    @Description("Search for specific id with parameters under \"By ID or Title\"")
     private void searchById(MovieResponse movieResult) {
         ValidatableResponse response = given()
                 .param("i", movieResult.getImdbID())
